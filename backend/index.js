@@ -6,6 +6,9 @@ const AuthRoutes = require('./Routes/AuthRoutes');
 const productRouter = require('./Routes/productRouter');
 require('dotenv').config();
 require('./Models/db'); // Assuming this file initializes your database connection
+app.get('/ping', (req, res) => {
+  res.send('Hello World!');
+});
 
 const PORT = process.env.PORT || 3008;
 
