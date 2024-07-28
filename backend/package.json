@@ -13,9 +13,9 @@
     "cors": "^2.8.5",
   "bcrypt": "^5.0.1",
     "express": "^4.17.1",
-     "express-validator": "^6.14.0",
-    
-    "jsonwebtoken": "^8.5.1",
+    "joi": "^17.1.1", // or the latest version you want to use
+    "express-validator": "^6.12.0", // or the latest version you want to use
+    "jsonwebtoken": "^8.5.1" // or the latest version you want to use
     "mongoose": "^5.9.10"
   },
   "devDependencies": {
