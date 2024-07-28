@@ -1,10 +1,14 @@
 {
-    "rewrites":
-    [
+  "rewrites": [
+    {
+      "source": "/dashboard",
+      "missing": [
         {
-            
-            "destination": "/index.html"
-
+          "type": "cookie",
+          "key": "auth_token"
         }
-    ]
+      ],
+      "destination": "/login"
+    }
+  ]
 }
