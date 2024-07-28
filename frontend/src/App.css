@@ -1,0 +1,76 @@
+*, ::after, ::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+label {
+  font-size: 20px;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0; /* Adding a background color for better contrast */
+  font-family: Arial, sans-serif; /* Adding a font-family for better typography */
+}
+
+.container {
+  background-color: #fff;
+  padding: 32px 48px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 24px rgba(66, 68, 90, 0.1); /* Corrected the shadow property */
+  width: 100%;
+  max-width: 400px; /* Setting a max-width for better layout control */
+}
+
+.container > h1 {
+  margin-bottom: 20px;
+}
+
+.container > form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.container div {
+  display: flex;
+  flex-direction: column;
+}
+
+.container input {
+  width: 100%;
+  font-size: 20px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid black; /* Fixed typo: '1ps' to '1px' */
+}
+
+.container input::placeholder {
+  font-size: 12px;
+  font-style: italic;
+}
+
+button {
+  background-color: purple;
+  border: none;
+  font-size: 20px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+button:hover {
+  background-color: darkviolet; /* Adding a hover effect for better UX */
+}
