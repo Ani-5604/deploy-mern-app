@@ -30,7 +30,7 @@ function Login() {
         }
 
         try {
-            const response = await fetch('https://deploy-mern-app-sandy.vercel.app//auth/login', {
+            const response = await fetch('https://deploy-mern-app-pi.vercel.app/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
