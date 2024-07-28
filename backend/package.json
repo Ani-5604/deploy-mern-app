@@ -15,7 +15,7 @@
     "express": "^10.8.2",
    "joi": "^ 10.8.2",
     
-    "express-validator": "^7.1.0", 
+    "express-validator": "^10.8.2", 
     "jsonwebtoken": "^8.5.1" 
     "mongoose": "^5.9.10"
   },
