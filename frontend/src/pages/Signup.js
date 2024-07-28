@@ -27,7 +27,7 @@ function Signup() {
         }
     
         try {
-            const response = await fetch('http://localhost:3008/auth/signup', {
+            const response = await fetch('https://deploy-mern-app-delta.vercel.app/auth/signup', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, password }),
