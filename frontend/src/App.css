@@ -72,5 +72,5 @@ button {
 }
 
 button:hover {
-  background-color: darkviolet; /* Adding a hover effect for better UX */
+  background-color: darkblue; /* Adding a hover effect for better UX */
 }
