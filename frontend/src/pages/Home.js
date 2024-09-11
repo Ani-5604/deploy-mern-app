@@ -1,73 +1,83 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { handleError, handleSuccess } from "../utile";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
+import React, { useState } from 'react';
+import './Home.css'; // Ensure the correct path for CSS
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faTicketAlt, faQuestionCircle, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 function Home() {
-    const [loggedInUser, setLoggedInUser] = useState('');
-    const [products, setProducts] = useState('');
-    const navigate = useNavigate();
+  const [from, setFrom] = useState('');
+  const [to, setTo] = useState('');
+  const [date, setDate] = useState('');
 
-    useEffect(() => {
-        const user = localStorage.getItem('loggedInUser');
-        setLoggedInUser(user);
-        
-        fetchProducts();  // Fetch products after the component mounts
-    }, []);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (from && to && date) {
+      alert(`Searching buses from ${from} to ${to} on ${date}`);
+    } else {
+      alert('Please fill in all fields.');
+    }
+  };
 
-    const handleLogout = () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('loggedInUser');
-        handleSuccess('User Logged out');
-        toast.success('User Logged out');
-        setTimeout(() => {
-            navigate('/login');
-        }, 1000);
-    };
+  return (
+    <div className="container">
+      <h1>Smart Bus</h1>
+      <div className="form-section">
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label htmlFor="from">From</label>
+            <input
+              type="text"
+              id="from"
+              placeholder="Enter Departure Location"
+              value={from}
+              onChange={(e) => setFrom(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="to">To</label>
+            <input
+              type="text"
+              id="to"
+              placeholder="Enter Destination"
+              value={to}
+              onChange={(e) => setTo(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="date">Date of Journey</label>
+            <input
+              type="date"
+              id="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit" className="search-btn">Search Buses</button>
+        </form>
+      </div>
 
-    const fetchProducts = async () => {
-        try {
-            const url = "https://deploy-mern-app-eight.vercel.app/products";
-            const token = localStorage.getItem('token');
-            const headers = {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            };
-
-            const response = await fetch(url, { headers });
-            // Log the token to verify it is correct
-            console.log('Token:', token);
-
-            if (!response.ok) {
-                const errorText = await response.text();
-                throw new Error(`Failed to fetch products: ${response.status} ${response.statusText}. Details: ${errorText}`);
-            }
-            const result = await response.json();
-            console.log(result);
-            setProducts(result);
-          
-        } catch (err) {
-            console.error('Error fetching products:', err);
-            handleError(err);
-            toast.error(`Error fetching products: ${err.message}`);
-        }
-    };
-
-    return (
-        <div>
-            <h1>Welcome, {loggedInUser}</h1>
-            <button onClick={handleLogout}>Logout</button>
-            <div>
-                {products && products.map((item, index) => (
-                    <ul key={item.id}>
-                        <span>{item.name}: {item.price}</span>
-                    </ul>
-                ))}
-            </div>
-            <ToastContainer />
-        </div>
-    );
+      <div className="nav">
+        <a href="#" className="nav-item">
+          <FontAwesomeIcon icon={faHome} />
+          <Link to="/">Home</Link>
+        </a>
+        <a href="#" className="nav-item">
+          <FontAwesomeIcon icon={faTicketAlt} />
+          <span>Bookings</span>
+        </a>
+        <a href="#" className="nav-item">
+          <FontAwesomeIcon icon={faQuestionCircle} />
+          <span>Help</span>
+        </a>
+        <a href="#" className="nav-item">
+          <FontAwesomeIcon icon={faUser} />
+          <Link to="/Signup">Account Sign up/Sign in</Link>
+        </a>
+      </div>
+    </div>
+  );
 }
 
 export default Home;
